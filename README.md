@@ -1,27 +1,30 @@
 # Oladipupo_Assignment_13
 
-## Introduction and Justification
->Simulating DNA sequencing reads is a common practice in bioinformatics to test algorithms, pipelines, and analytical methods without using real sequencing data
->Relevance: It helps understand how sequencing errors and mutations can affect downstream analyses like alignment, assembly, and variant calling.
->Bioinformatics Aspect: Real sequencing data often contain errors due to technological limitations. Simulating these errors is crucial for developing error correction algorithms and assessing their effectiveness.
+## Background
+### Jutification
+  * Simulating DNA sequencing reads is a common practice in bioinformatics to test algorithms, pipelines, and analytical methods without using real sequencing data
+  * Relevance: It helps understand how sequencing errors and mutations can affect downstream analyses like alignment, assembly, and variant calling.
+  * Bioinformatics Aspect: Real sequencing data often contain errors due to technological limitations. Simulating these errors is crucial for developing error correction   algorithms and assessing their effectiveness.
 
-Add-Ins
->Real-time Statistics and Visualization
-  **Monitoring data in real-time allows bioinformaticians to assess data quality and make immediate decisions during data processing.**
+### Why?
+ * Most bioinformatics simulations and visualizations rely on specialized software or programming languages like Python or R. Using Bash exclusively is unconventional and challenges you to leverage core UNIX tools creatively.
 
-Why?
->Most bioinformatics simulations and visualizations rely on specialized software or programming languages like Python or R. Using Bash exclusively is unconventional and challenges you to leverage core UNIX tools creatively.
+### Add-Ins
+ * Real-time Statistics and Visualization
+ * Monitoring data in real-time allows bioinformaticians to assess data quality and make immediate decisions during data processing.**
 
-What?
->A script that ......
+### Objective
+ * A script that ......
 
 ## The_Script
-A **_shebang_** line for shell script. This line specifies that the script should be run using the Bash shell.  
+* Written with Nano on ASC HPC machine
+
+> A **_shebang_** line for shell script. This line specifies that the script should be run using the Bash shell.  
 >```ruby
 >#! /bin/bash
 >```
-
-Simulation Parameters and Output File Initialization
+_______________________________________________________
+> Simulation Parameters and Output File Initialization
 >```ruby
 ># Number of reads to simulate
 >NUM_READS=100
@@ -33,34 +36,36 @@ Simulation Parameters and Output File Initialization
 >OUTPUT_FILE="mutated_reads.fasta"
 > "$OUTPUT_FILE"  # Truncate the file if it exists
 >```
+_________________________________________________________
 
-Statistical Counters Initialization
-   * Generates a random DNA sequence of a specified length
-   * Loops length times, randomly selecting a nucleotide each time and appending it to seq
-
+> Statistical Counters Initialization
+>  * Generates a random DNA sequence of a specified length
+>   * Loops length times, randomly selecting a nucleotide each time and appending it to seq
+>     
 >```ruby
- >generate_read() {
- >local length=$1 #The length of the sequence.
- >local seq="" #The sequence being built.
- >
- >local nucleotides=("A" "T" "C" "G") 
- >for (( i=0; i<length; i++ )); do
- >rand_index=$(( RANDOM % 4 ))
- >seq+=${nucleotides[$rand_index]} 
- >done
- >
- >echo "$seq"
- >}
- >```
+>generate_read() {
+>local length=$1 #The length of the sequence.
+>local seq="" #The sequence being built.
+>
+>local nucleotides=("A" "T" "C" "G") 
+>for (( i=0; i<length; i++ )); do
+>rand_index=$(( RANDOM % 4 ))
+>seq+=${nucleotides[$rand_index]} 
+>done
+>
+>echo "$seq"
+>}
+>```
+______________________________________________________________
 
-Function: introduce_errors
-  * <u>Purpose:</u> Introduces sequencing errors into a given DNA sequence.
-  * Parameters: The original DNA sequence ($1).
-  * Variables: **_Mutated_seq_**, **_error_count_**, **_seq_length_**, **_Nucleotides_**
-  * Logic: Iterates over each nucleotide in the sequence.
-  * Type of Error: SUBSTITUTION, DELETION, INSERTION, DELETION
-  * Randomly selects the type of error (substitution, insertion, deletion)
-
+> Function: introduce_errors
+> * <u>Purpose:</u> Introduces sequencing errors into a given DNA sequence.
+> * Parameters: The original DNA sequence ($1).
+> * Variables: **_Mutated_seq_**, **_error_count_**, **_seq_length_**, **_Nucleotides_**
+> * Logic: Iterates over each nucleotide in the sequence.
+> * Type of Error: SUBSTITUTION, DELETION, INSERTION, DELETION
+> * Randomly selects the type of error (substitution, insertion, deletion)
+>   
 >```ruby
 >introduce_errors() {
   >local seq="$1"
@@ -113,12 +118,13 @@ Function: introduce_errors
   > No need to echo output; mutated_seq and error_count are global variables
   > }
 >```
+__________________________________________________________________
 
-Function: display_statistics
-  *  Displays real-time simulation statistics in the terminal.
-  *  Prints total reads generated, mutated reads, total errors, error types, and nucleotide counts.
-  *  Calculates the progress percentage. Constructs a visual progress bar using # and - characters.
-    
+> Function: display_statistics
+> *  Displays real-time simulation statistics in the terminal.
+> *  Prints total reads generated, mutated reads, total errors, error types, and nucleotide counts.
+> *  Calculates the progress percentage. Constructs a visual progress bar using # and - characters.
+>   
 >```ruby
 > display_statistics() {
 ># Clear the screen
@@ -157,23 +163,25 @@ Function: display_statistics
 >  sleep 0.1
 > }
 >```
+_____________________________________________________________________
 
-Terminal Settings and Trap
-  * Ensures that the terminal returns to its normal state after the script finishes or is interrupted.
-
+> Terminal Settings and Trap
+> * Ensures that the terminal returns to its normal state after the script finishes or is interrupted.
+>   
 >```ruby
 > # Save the current terminal settings and clear the screen
 >tput smcup
 >trap "tput rmcup; exit" EXIT
 >```
+_________________________________________________________________
 
-Main Loop: Simulating Reads
-  * Simulates the specified number of reads, introduces errors, updates counters, and displays statistics.
-  * Check for Mutations and Compare read_seq and mutated_seq.
-  * If they are different, sets is_mutated to "Yes" and increments MUTATED_READS.
-  * Otherwise, sets is_mutated to "No."
-  * Appends the read information to OUTPUT_FILE, including whether it was mutated, the original sequence, and the mutated sequence
-    
+> Main Loop: Simulating Reads
+> * Simulates the specified number of reads, introduces errors, updates counters, and displays statistics.
+> * Check for Mutations and Compare read_seq and mutated_seq.
+> * If they are different, sets is_mutated to "Yes" and increments MUTATED_READS.
+> * Otherwise, sets is_mutated to "No."
+> * Appends the read information to OUTPUT_FILE, including whether it was mutated, the original sequence, and the mutated sequence
+>    
 >```ruby
 > # Simulate reads with errors
 >for (( n=1; n<=NUM_READS; n++ )); do
@@ -200,19 +208,21 @@ Main Loop: Simulating Reads
 >  display_statistics
 >done
 >```
+____________________________________________________
 
-Terminal Restoration and Completion Message
+> Terminal Restoration and Completion Message
 >```ruby
 ># Restore the terminal settings when done
 >tput rmcup
 >
 >echo -e "\n\nSimulation complete. Mutated reads saved to '$OUTPUT_FILE'."
 >```
+___________________________________________________
 
 ## Sample Output
 Real-time data generation
 >```ruby
->![Real-time run on Bash](https://example.com/image.png)
+>
 >```
 
 ![Image showing real-time run](REAL-TIME.png)
