@@ -1,22 +1,25 @@
 # Oladipupo_Assignment_13
 
 ## Background
-### Jutification
+### Justifications
   * Simulating DNA sequencing reads is a common practice in bioinformatics to test algorithms, pipelines, and analytical methods without using real sequencing data
-  * Relevance: It helps understand how sequencing errors and mutations can affect downstream analyses like alignment, assembly, and variant calling.
-  * Bioinformatics Aspect: Real sequencing data often contain errors due to technological limitations. Simulating these errors is crucial for developing error correction   algorithms and assessing their effectiveness.
+  * It helps understand how sequencing errors and mutations can affect downstream analyses like alignment, assembly, taxonomy assignment, and variant calling.
+  * Due to technological limitations, real sequencing data often contain errors. Simulating these errors is crucial for developing error correction algorithms and assessing their effectiveness.
 
 ### Why?
  * Most bioinformatics simulations and visualizations rely on specialized software or programming languages like Python or R. Using Bash exclusively is unconventional and challenges you to leverage core UNIX tools creatively.
 
+### Objective
+ * Write a script that simulates reads with controlled errors
+ * This script could be integrated for use in developing algorithms for error correction
+ * Produce a controlled reads to test the functionality of any pipeline
+
 ### Add-Ins
  * Real-time Statistics and Visualization
- * Monitoring data in real-time allows bioinformaticians to assess data quality and make immediate decisions during data processing.**
+ * This real-time monitoring could allow bioinformaticians to assess data quality and make immediate decisions during data processing
 
-### Objective
- * A script that ......
 
-## The_Script
+## The Script
 * Written with Nano on ASC HPC machine
 
 > A **_shebang_** line for shell script. This line specifies that the script should be run using the Bash shell.  
