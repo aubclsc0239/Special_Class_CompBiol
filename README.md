@@ -50,8 +50,8 @@ Statistical Counters Initialization
  >done
  >
  >echo "$seq"
-}
->```
+ >}
+ >```
 
 Function: introduce_errors
   * <u>Purpose:</u> Introduces sequencing errors into a given DNA sequence.
