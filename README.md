@@ -215,7 +215,7 @@ Real-time data generation
 >![Real-time run on Bash](https://example.com/image.png)
 >```
 
-![Image showing real-time run](https://example.com/image.png)
+![Image showing real-time run](REAL-TIME.png)
 
 Output file/Log file
 ![Image showing output file](OUTPUT.png)
