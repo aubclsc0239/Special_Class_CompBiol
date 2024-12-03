@@ -21,13 +21,15 @@
 
 ## The Script
 * Written with Nano on ASC HPC machine
-
 > A **_shebang_** line for shell script. This line specifies that the script should be run using the Bash shell.  
 >```ruby
 >#! /bin/bash
 >```
 _______________________________________________________
-> Simulation Parameters and Output File Initialization
+
+* Simulation Parameters and Output File Initialization
+> * Define variables for the number of reads and length
+> 
 >```ruby
 ># Number of reads to simulate
 >NUM_READS=100
@@ -41,7 +43,7 @@ _______________________________________________________
 >```
 _________________________________________________________
 
-> Statistical Counters Initialization
+* Statistical Counters Initialization
 >  * Generates a random DNA sequence of a specified length
 >   * Loops length times, randomly selecting a nucleotide each time and appending it to seq
 >     
@@ -61,7 +63,7 @@ _________________________________________________________
 >```
 ______________________________________________________________
 
-> Function: introduce_errors
+* Function: introduce_errors
 > * <u>Purpose:</u> Introduces sequencing errors into a given DNA sequence.
 > * Parameters: The original DNA sequence ($1).
 > * Variables: **_Mutated_seq_**, **_error_count_**, **_seq_length_**, **_Nucleotides_**
@@ -123,7 +125,7 @@ ______________________________________________________________
 >```
 __________________________________________________________________
 
-> Function: display_statistics
+* Function: display_statistics
 > *  Displays real-time simulation statistics in the terminal.
 > *  Prints total reads generated, mutated reads, total errors, error types, and nucleotide counts.
 > *  Calculates the progress percentage. Constructs a visual progress bar using # and - characters.
@@ -168,7 +170,7 @@ __________________________________________________________________
 >```
 _____________________________________________________________________
 
-> Terminal Settings and Trap
+* Terminal Settings and Trap
 > * Ensures that the terminal returns to its normal state after the script finishes or is interrupted.
 >   
 >```ruby
@@ -178,7 +180,7 @@ _____________________________________________________________________
 >```
 _________________________________________________________________
 
-> Main Loop: Simulating Reads
+* Main Loop: Simulating Reads
 > * Simulates the specified number of reads, introduces errors, updates counters, and displays statistics.
 > * Check for Mutations and Compare read_seq and mutated_seq.
 > * If they are different, sets is_mutated to "Yes" and increments MUTATED_READS.
@@ -213,7 +215,7 @@ _________________________________________________________________
 >```
 ____________________________________________________
 
-> Terminal Restoration and Completion Message
+* Terminal Restoration and Completion Message
 >```ruby
 ># Restore the terminal settings when done
 >tput rmcup
@@ -232,6 +234,18 @@ Real-time data generation
 
 Output file/Log file
 ![Image showing output file](OUTPUT.png)
+
+## Application
+> * Create datasets with known error profiles to train machine learning models for error correction.
+> * Provide simulated reads to assembly software like SPAdes or Velvet and analyze the assembly results.
+> * Use the synthetic data to test how well quality control tools detect and report errors.
+> * Use the script in workshops or courses to allow students to experiment with different error rates and observe the effects.
+
+## Possible development
+> * Record the positions and types of mutations introduced which will be useful for error correction tool
+> * Optimize the script to handle the generation of millions of reads efficiently.
+> * Incorporate error models that reflect the biases and patterns of specific sequencing technologies.
+> * Include quality scores to simulate real sequencing data more accurately, especially for a pipeline that requires a FASTQ input
 
 
 
