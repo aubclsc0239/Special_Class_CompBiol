@@ -1,4 +1,4 @@
-# Oladipupo_Assignment_13
+# Oladipupo_Assignment_16 (Comp_Biology)
 
 ## Background
 ### Justifications
@@ -234,15 +234,24 @@ Real-time data generation
 
 Output file/Log file
 ![Image showing output file](OUTPUT.png)
+______________________________________________________
+
+## AI Contribution
+> * I used AI to refine the idea of the script
+> * AI was used to improve the main loop script for iterating and comparing seq and mutated_seq
+> * AI gave me the option of running the script analysis in real time on the terminal and ensuring the terminal is cleared.
+> * With AI, the script improved for integration into an existing pipeline 
+______________________________________________________
 
 ## Application
 > * Create datasets with known error profiles to train machine learning models for error correction.
 > * Provide simulated reads to assembly software like SPAdes or Velvet and analyze the assembly results.
 > * Use the synthetic data to test how well quality control tools detect and report errors.
 > * Use the script in workshops or courses to allow students to experiment with different error rates and observe the effects.
+_______________________________________________________
 
 ## Possible development
-> * Record the positions and types of mutations introduced which will be useful for error correction tool
+> * Record the positions and types of mutations introduced, which will be useful for the error correction tool
 > * Optimize the script to handle the generation of millions of reads efficiently.
 > * Incorporate error models that reflect the biases and patterns of specific sequencing technologies.
 > * Include quality scores to simulate real sequencing data more accurately, especially for a pipeline that requires a FASTQ input
