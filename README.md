@@ -210,6 +210,18 @@ Terminal Restoration and Completion Message
 >```
 
 ## Sample Output
+Real-time data generation
+>```ruby
+>![Real-time run on Bash](https://example.com/image.png)
+>```
+
+![Image showing real-time run](https://example.com/image.png)
+
+Output file/Log file
+![Image showing output file](https://example.com/image.png)
+
+
+
 
 
 
