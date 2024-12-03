@@ -218,7 +218,7 @@ Real-time data generation
 ![Image showing real-time run](https://example.com/image.png)
 
 Output file/Log file
-![Image showing output file](https://example.com/image.png)
+![Image showing output file](OUTPUT.png)
 
 
 
